@@ -325,8 +325,8 @@ impl<N: Network, C: ConsensusStorage<N>> VM<N, C> {
                             Err(_error) => match fee {
                                 // Finalize the fee, to ensure it is valid.
                                 Some(fee) => {
-                                    tracing::error!(
-                                        "Failed to finalize the fee in a rejected execute - {_error} and {execution}"
+                                    println!(
+                                        "NaokiLH: Failed to finalize the fee in a rejected execute - {_error} and {execution}"
                                     );
                                     match process.finalize_fee(state, store, fee).and_then(|finalize| {
                                         Transaction::from_fee(fee.clone()).map(|fee_tx| (fee_tx, finalize))
